@@ -20,8 +20,6 @@
 const BAR_WEIGHT = 45;
 const PLATE_WEIGHTS = [45,35,25,10,5,2.5];
 const ROUND_TO = 5;
-const STARTING_STRENGTH = 1;
-const QUARTERS = 2;
 
 class BarbellWeight {
     constructor(workingWeight, lift, options) {
@@ -29,16 +27,17 @@ class BarbellWeight {
         this.lift = lift;  
         this.isDeadlift = (lift == 'deadlift');
 
-        this.options = options || { program: STARTING_STRENGTH }
+        this.options = options || { program: 'STARTING_STRENGTH' }
 
         this.baseWeight = 0; 
-        if (this.options.program === QUARTERS) {
+        if (this.options.program === 'QUARTERS') {
             this.baseWeight = BAR_WEIGHT + (this.isDeadlift ? 90 : 0);
         }
         this.dynamicWeight = this.workingWeight - this.baseWeight;
 
         this.results = {
             lift: lift,
+            program: this.options.program,
             workingWeight: workingWeight,
             sets: [
                 {
@@ -70,7 +69,7 @@ class BarbellWeight {
         let exactWeights = [];
         let tempWeight = 0;
 
-        if (this.options.program === STARTING_STRENGTH) {
+        if (this.options.program == 'STARTING_STRENGTH') {
 
             //40%
             tempWeight = this.workingWeight * .4;
@@ -158,6 +157,9 @@ class BarbellWeight {
 
             warmupSet.plates.fortyFive = Math.floor(currentSideWeight / 45);
             currentSideWeight -= 45 * warmupSet.plates.fortyFive;
+
+            warmupSet.plates.thirtyFive = Math.floor(currentSideWeight / 35);
+            currentSideWeight -= 35 * warmupSet.plates.thirtyFive;
 
             warmupSet.plates.twentyFive = Math.floor(currentSideWeight / 25);
             currentSideWeight -= 25 * warmupSet.plates.twentyFive;

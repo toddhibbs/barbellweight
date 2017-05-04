@@ -1,6 +1,6 @@
 {
   "name": "barbellweights",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Calculates the warmup sets, reps and plates for barbell lifts",
   "main": "barbellweights.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "exercise"
   ],
   "author": "Todd Hibbs <todd@toddhibbs.com> (http://toddhibbs.com)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/toddhibbs/barbellweight/issues"
   },

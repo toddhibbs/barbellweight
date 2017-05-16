@@ -102,5 +102,25 @@ describe('BarbellWeight', function() {
         expect(results.sets[1].plates.twoPointFive).to.equal(0);
     });
 
+    it('should be able to specify which plates are available', function() {
+        let results = new BarbellWeight(150, 'squats', { plates: [5] }).getResults();
+        expect(results.sets[4].plates).to.not.have.property('fortyFive');
+        expect(results.sets[4].plates).to.not.have.property('thirtyFive');        
+        expect(results.sets[4].plates).to.not.have.property('twentyFive');
+        expect(results.sets[4].plates).to.not.have.property('ten');
+        expect(results.sets[4].plates).to.have.property('five');
+        expect(results.sets[4].plates).to.not.have.property('twoPointFive');
+        expect(results.sets[4].plates.five).to.equal(10);
+        expect(results.sets[4].plates.extra).to.equal(2.5);
+    });
+
+    it('should be able to specify the weight of the bar', function() {
+        let results = new BarbellWeight(100, 'squats', { bar: [25] }).getResults();
+        expect(results.sets[4].plates).to.have.property('thirtyFive');
+        expect(results.sets[4].plates).to.have.property('twoPointFive');
+        expect(results.sets[4].plates.thirtyFive).to.equal(1);
+        expect(results.sets[4].plates.twoPointFive).to.equal(1);
+    });
+
 
 });

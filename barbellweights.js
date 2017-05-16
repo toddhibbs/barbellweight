@@ -65,7 +65,7 @@ class BarbellWeight {
 
         if (this.isDeadlift) {
             //update first two sets to account for initial plates
-            this.results.sets[0].totalWeight = this.options.bar + 90;
+            this.results.sets[0].totalWeight = parseInt(this.options.bar) + 90;
             this.results.sets[0].plateWeight = 90;
             this.results.sets[0].sideWeight = 45;
         }

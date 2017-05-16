@@ -122,5 +122,16 @@ describe('BarbellWeight', function() {
         expect(results.sets[4].plates.twoPointFive).to.equal(1);
     });
 
+    it('should be able to specify the weight of the bar for deadlift', function() {
+        let results = new BarbellWeight(115, 'deadlift', { bar: [25] }).getResults();
+        expect(results.sets[4].plates).to.have.property('fortyFive');
+        expect(results.sets[4].plates.fortyFive).to.equal(1);
+        expect(results.sets[4].plates.thirtyFive).to.equal(0);
+        expect(results.sets[4].plates.twentyFive).to.equal(0);
+        expect(results.sets[4].plates.ten).to.equal(0);
+        expect(results.sets[4].plates.five).to.equal(0);
+        expect(results.sets[4].plates.twoPointFive).to.equal(0);
+    });
+
 
 });

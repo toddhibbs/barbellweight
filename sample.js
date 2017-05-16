@@ -1,7 +1,7 @@
 
 const { BarbellWeight } = require('./barbellweights.js');
 
-let results = new BarbellWeight(75, 'bench').getResults();
+let results = new BarbellWeight(115, 'bench', {bar: 25}).getResults();
 
 console.log();
 console.log('Lift: ', results.lift);
@@ -18,6 +18,9 @@ for (let i = 0; i < results.sets.length; i++) {
 
     if (results.sets[i].plates.fortyFive > 0) {
         console.log(results.sets[i].plates.fortyFive + " - 45 lbs");
+    }
+    if (results.sets[i].plates.thirtyFive > 0) {
+        console.log(results.sets[i].plates.thirtyFive + ' - 35 lbs');
     }
     if (results.sets[i].plates.twentyFive > 0) {
         console.log(results.sets[i].plates.twentyFive + ' - 25 lbs');

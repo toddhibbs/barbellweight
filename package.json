@@ -1,6 +1,6 @@
 {
   "name": "barbellweights",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Calculates the warmup sets, reps and plates for barbell lifts",
   "main": "barbellweights.js",
   "scripts": {

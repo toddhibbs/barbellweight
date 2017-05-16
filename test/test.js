@@ -16,6 +16,22 @@ describe('BarbellWeight', function() {
         expect(results.sets[2].totalWeight).to.be.at.least(45);
     });
 
+    it('should not set warmup weight of deadlift to less than the barbell plus 45lb plate on each side', function() {
+        let results = new BarbellWeight(100, 'deadlift').getResults();
+        expect(results.sets[0].totalWeight).to.be.at.least(135);
+        expect(results.sets[1].totalWeight).to.be.at.least(135);
+        expect(results.sets[2].totalWeight).to.be.at.least(135);
+        expect(results.sets[3].totalWeight).to.be.at.least(135);
+    });
+
+    it('should not set warmup weight of deadlift to less than the barbell plus 45lb plate on each side for QUARTERS', function() {
+        let results = new BarbellWeight(100, 'deadlift', { program: 'QUARTERS' }).getResults();
+        expect(results.sets[0].totalWeight).to.be.at.least(135);
+        expect(results.sets[1].totalWeight).to.be.at.least(135);
+        expect(results.sets[2].totalWeight).to.be.at.least(135);
+        expect(results.sets[3].totalWeight).to.be.at.least(135);
+    });
+
     it('should calculate the 40% correctly', function() {
         let results = new BarbellWeight(300, 'squats').getResults();
         expect(results.sets[1].totalWeight).to.equal(120);

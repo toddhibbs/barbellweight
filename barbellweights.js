@@ -27,7 +27,7 @@ class BarbellWeight {
         this.lift = lift;  
         this.isDeadlift = (lift == 'deadlift');
 
-        this.options = options || { program: 'STARTING_STRENGTH' }
+        this.options = options || { program: 'STARTING_STRENGTH' };
 
         this.baseWeight = 0; 
         if (this.options.program === 'QUARTERS') {
@@ -50,6 +50,13 @@ class BarbellWeight {
                 }
             ]
         };
+
+        if (this.isDeadlift) {
+            //update first two sets to account for initial plates
+            this.results.sets[0].totalWeight = BAR_WEIGHT + 90;
+            this.results.sets[0].plateWeight = 90;
+            this.results.sets[0].sideWeight = 45;
+        }
 
         this._calculateResults();
     }
@@ -103,6 +110,13 @@ class BarbellWeight {
 
             //100%
             exactWeights.push(this.workingWeight);
+        }
+
+        //make sure the minimum weight is the bar plus 45lb on each side for deadlift
+        if (this.isDeadlift) {
+            for(let i = 0; i < exactWeights.length; i++) {
+                exactWeights[i] = exactWeights[i] < 135 ? 135 : exactWeights[i]
+            }
         }
 
         this.exactWeights = exactWeights;

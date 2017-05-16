@@ -1,7 +1,7 @@
 
 const { BarbellWeight } = require('./barbellweights.js');
 
-let results = new BarbellWeight(95, 'squats').getResults();
+let results = new BarbellWeight(75, 'bench').getResults();
 
 console.log();
 console.log('Lift: ', results.lift);

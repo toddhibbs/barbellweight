@@ -134,5 +134,12 @@ describe('BarbellWeight', function() {
         expect(results.sets[4].plates.twoPointFive).to.equal(0);
     });
 
+    it('should have 1 set of 5 reps for deadlift', function() {
+        let results = new BarbellWeight(185, 'deadlift').getResults();
+        expect(results.sets[4].totalWeight).to.equal(185);
+        expect(results.sets[4].reps).to.equal(5);
+        expect(results.sets[4].sets).to.equal(1);
+    });
+
 
 });

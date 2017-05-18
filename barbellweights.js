@@ -169,12 +169,17 @@ class BarbellWeight {
                     reps = 5
             }
 
+            let currentSets = 1;
+            if (i == 3 && !this.isDeadlift) {
+                currentSets = 3;
+            }
+
             let warmupSet = { 
                 totalWeight: this.estimatedWeights[i],
                 plateWeight: this.estimatedWeights[i] - this.options.bar,
                 sideWeight: ((this.estimatedWeights[i] - this.options.bar) / 2),
                 reps: reps,
-                sets: i === 3 ? 3 : 1,
+                sets: currentSets,
                 plates: {}
             };
 

@@ -20,6 +20,7 @@
 const BAR_WEIGHT = 45;
 const PLATE_WEIGHTS = [45,35,25,10,5,2.5];
 const ROUND_TO = 5;
+const WARMUP_ROUND_TO = 10; // will result in minimum 5lb plate on each side
 
 class BarbellWeight {
     constructor(workingWeight, lift, options) {
@@ -42,7 +43,7 @@ class BarbellWeight {
         }
 
         if (!this.options.warmup_round_to) {
-            this.options.warmup_round_to = ROUND_TO;
+            this.options.warmup_round_to = WARMUP_ROUND_TO;
         }
         else {
             this.options.warmup_round_to = parseInt(this.options.warmup_round_to ,10);

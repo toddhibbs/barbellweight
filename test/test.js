@@ -141,5 +141,17 @@ describe('BarbellWeight', function() {
         expect(results.sets[4].sets).to.equal(1);
     });
 
+    it('should support setting the minimum roundto weight for warmup sets', function() {
+        let results = new BarbellWeight(190, 'deadlift', {warmup_round_to: 10}).getResults();
+        expect(results.sets[4].plates.twoPointFive).to.equal(1);
+        expect(results.sets[3].plates.twoPointFive).to.equal(0);
+    });
+
+    it('should support setting the minimum roundto weight for warmup sets for QUARTERS', function() {
+        let results = new BarbellWeight(190, 'deadlift', {warmup_round_to: 10, program: 'QUARTERS'}).getResults();
+        expect(results.sets[4].plates.twoPointFive).to.equal(1);
+        expect(results.sets[3].plates.twoPointFive).to.equal(0);
+    });
+
 
 });

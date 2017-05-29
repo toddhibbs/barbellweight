@@ -1,7 +1,7 @@
 
 const { BarbellWeight } = require('./barbellweights.js');
 
-let results = new BarbellWeight(185, 'deadlift').getResults();
+let results = new BarbellWeight(190, 'deadlift',{warmup_round_to: 10}).getResults();
 
 console.log();
 console.log('Lift: ', results.lift);

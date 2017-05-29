@@ -41,6 +41,13 @@ class BarbellWeight {
             this.options.plates = PLATE_WEIGHTS;
         }
 
+        if (!this.options.warmup_round_to) {
+            this.options.warmup_round_to = ROUND_TO;
+        }
+        else {
+            this.options.warmup_round_to = parseInt(this.options.warmup_round_to ,10);
+        }
+
         this.baseWeight = 0; 
         if (this.options.program === 'QUARTERS') {
             this.baseWeight = this.options.bar + (this.isDeadlift ? 90 : 0);
@@ -140,7 +147,9 @@ class BarbellWeight {
         let estimatedWeights = [];
 
         for (let i = 0; i < 3; i++) {
-            estimatedWeights.push(Math.round(this.exactWeights[i] / ROUND_TO) * ROUND_TO);
+            let exactPlateWeight = this.exactWeights[i] - this.options.bar;
+            let estimatedPlateWeight = Math.round(exactPlateWeight / this.options.warmup_round_to) * this.options.warmup_round_to;
+            estimatedWeights.push(estimatedPlateWeight + this.options.bar);
         }
         estimatedWeights.push(this.workingWeight);
 
